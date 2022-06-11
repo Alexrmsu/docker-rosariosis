@@ -1,13 +1,36 @@
 Docker RosarioSIS
 =================
 
-A Dockerfile that installs the latest [RosarioSIS](https://www.rosariosis.org/). This file pulls from the default branch, but can be easily modified to pull from any other available branch or tagged release.
+# Este es un fork del repositorio original, puedes alternativamente observar la guia oficial del repositorio original
 
-## Installation
+## Instalacion
 
-Minimum requirements: [Docker](https://www.docker.com/) & Git working.
+Requisitos: Instancia de AWS (Familia Debian, como Ubuntu o la misma Debian) Git y algun editor de texto como VIM o NANO
 
-You can pull the image from [DockerHub](https://hub.docker.com/r/rosariosis/rosariosis) or:
+## Uso
+
+RosarioSIS usa PostgreSQL como Base de datos
+
+El repositorio cuenta con un docker-compose.yml
+
+```bash
+docker-compose up -d
+```
+Una vez levantado el archivo compose, ambos contenedores estaran arriba para su uso, si te aparece un problema con sql, es porque se debe crear la base de datos
+
+Para ello debes ingresar en el navegador:  [IP_PUBLICA_DE_LA_MAQUINA]/InstallDatabase.php
+
+En el sitio, se te creara la base de datos para ingresar al sitio
+
+# Credenciales
+
+* Administrador =     Usuario: admin   Pass: admin
+* Profesor =  Usuario: teacherf Pass: teacher
+* Estudiante = Usuario: student Pass: student
+
+# Con lo anterior ya tendras el sistema montado (Recordar tener el puerto 80 tcp abierto)
+
+# Si necesitas hacerlo sin compose sigue los pasos que vienen a continuacion
 
 ```bash
 git clone https://gitlab.com/francoisjacquet/docker-rosariosis.git
@@ -15,14 +38,13 @@ cd docker-rosariosis
 docker build -t rosariosis .
 ```
 
-## Usage
+# Ejecutar la base de datos
 
-RosarioSIS uses a PostgreSQL database:
 ```bash
 docker run --name rosariosisdb -e "POSTGRES_PASSWORD=postgrespwd" -d postgres
 ```
 
-Create database:
+# Crear BD:
 ```bash
 docker exec -it rosariosisdb bash
 psql -h localhost -p 5432 -U postgres
@@ -32,20 +54,12 @@ postgres=# \q
 exit
 ```
 
-Run RosarioSIS (DockerHub image) and link the PostgreSQL container:
+# Ejecutar RosarioSIS (DockerHub image) y conectarlo al contenedor de POSTGRESQL:
 ```bash
 docker run -e "ROSARIOSIS_ADMIN_EMAIL=admin@example.com" -e "PGHOST=rosariosisdb" -h `hostname -f` -d -p 80:80 --name rosariosis --link rosariosisdb:rosariosisdb rosariosis/rosariosis:master
 ```
 
-Port 80 will be exposed, so you can visit http://localhost/InstallDatabase.php to get started. Default username and password: `admin`.
-
-Note: a `docker-compose.yml` file is available.
-
-Note 2: you may have to add `sudo` before the `docker` command.
-
-## Environment Variables
-
-The RosarioSIS image uses several environment variables which are easy to miss. While none of the variables are required, they may significantly aid you in using the image.
+## Variables de Entorno para modificar la APP
 
 ### PGHOST
 
@@ -102,7 +116,7 @@ mynetworks = 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8 127.0.0.0/8 [::ffff:127.0.0
 Note: alternatively, you can use the [Email SMTP](https://www.rosariosis.org/plugins/email-smtp/) plugin for RosarioSIS.
 
 
-## Additional configuration
+## Configuracion adicional oficial
 
 [Quick Setup Guide](https://www.rosariosis.org/quick-setup-guide/)
 
