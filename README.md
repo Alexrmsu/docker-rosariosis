@@ -2,6 +2,8 @@ Docker RosarioSIS
 =================
 
 * Este es un fork del repositorio original, puedes alternativamente observar la guia oficial del repositorio original
+* Este fork esta modificado tanto el readme.md como el archivo docker-compose para tener el sistema en español e indicar el paso a paso para levantarlo en aws
+
 
 ## Instalacion
 
@@ -9,28 +11,35 @@ Requisitos: Instancia de AWS (Familia Debian, como Ubuntu o la misma Debian) Git
 
 ## Uso
 
-RosarioSIS usa PostgreSQL como Base de datos
+Clona el repositorio en el apartado de CODE en github y copias el HTTPS 
+
+```bash
+git clone https://github.com/Alexrmsu/docker-rosariosis.git
+```
+
+RosarioSIS usa PostgreSQL como Base de datos y un servidor web que puede ser levantado con Docker
 
 El repositorio cuenta con un docker-compose.yml
 
 ```bash
 docker-compose up -d
 ```
-Una vez levantado el archivo compose, ambos contenedores estaran arriba para su uso, si te aparece un problema con sql, es porque se debe crear la base de datos
+Una vez levantado el archivo compose, ambos contenedores estaran arriba para su uso y puedes visitar el servidor web con la ip publica de tu maquina, si esta te arroja un mensaje con una consulta SQL, deberas crear la base de datos.
 
 Para ello debes ingresar en el navegador:  [IP_PUBLICA_DE_LA_MAQUINA]/InstallDatabase.php
 
-En el sitio, se te creara la base de datos para ingresar al sitio
+En el sitio, se te creara la base de datos para ingresar al sitio y logearte.
 
 # Credenciales
 
-* Administrador =     Usuario: admin   Pass: admin
+* Administrador =  Usuario: admin   Pass: admin
 * Profesor =  Usuario: teacherf Pass: teacher
 * Estudiante = Usuario: student Pass: student
 
-# Con lo anterior ya tendras el sistema montado (Recordar tener el puerto 80 tcp abierto)
+* Con lo anterior ya tendras el sistema montado (Recordar tener el puerto 80 tcp abierto)
 
-# Si necesitas hacerlo sin compose sigue los pasos que vienen a continuacion
+
+# Si necesitas hacerlo sin compose sigue los pasos que vienen a continuacion de la documentacion original
 
 ```bash
 git clone https://gitlab.com/francoisjacquet/docker-rosariosis.git
