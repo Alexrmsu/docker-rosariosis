@@ -11,13 +11,20 @@ Requisitos: Instancia de AWS (Familia Debian, como Ubuntu o la misma Debian) Git
 
 ## Uso
 
-Clona el repositorio en el apartado de CODE en github y copias el HTTPS 
+
+Clona el repositorio en el apartado de CODE en github y copias el HTTPS en tu instancia 
 
 ```bash
 git clone https://github.com/Alexrmsu/docker-rosariosis.git
 ```
 
-RosarioSIS usa PostgreSQL como Base de datos y un servidor web que puede ser levantado con Docker
+Si no tienes git:
+```bash
+apt-get install git
+git
+```
+
+RosarioSIS usa PostgreSQL como Base de datos y un servidor web que puede ser levantado con [DOCKER]
 
 El repositorio cuenta con un docker-compose.yml
 
@@ -38,6 +45,12 @@ En el sitio, se te creara la base de datos para ingresar al sitio y logearte.
 
 * Con lo anterior ya tendras el sistema montado (Recordar tener el puerto 80 tcp abierto)
 
+* Si deseas configurar el proyecto con otro idioma u otras configuraciones con las variables de entorno, puedes usar un editor de texto para modificar el docker-compose.yml con VIM, NANO o el editor de tu preferencia
+
+```bash
+vi docker-compose.yml
+nano docker-compose.yml
+```
 
 # Si necesitas hacerlo sin compose sigue los pasos que vienen a continuacion de la documentacion original
 
