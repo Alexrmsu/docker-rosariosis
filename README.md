@@ -1,7 +1,7 @@
 Docker RosarioSIS
 =================
 
-* Este es un fork del repositorio original, puedes alternativamente observar la guia oficial del repositorio original
+* Este es un fork del repositorio original, puedes alternativamente observar la guia oficial del repositorio
 * Este fork esta modificado tanto el readme.md como el archivo docker-compose para tener el sistema en español e indicar el paso a paso para levantarlo en aws
 
 
