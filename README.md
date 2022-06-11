@@ -1,7 +1,7 @@
 Docker RosarioSIS
 =================
 
-# Este es un fork del repositorio original, puedes alternativamente observar la guia oficial del repositorio original
+* Este es un fork del repositorio original, puedes alternativamente observar la guia oficial del repositorio original
 
 ## Instalacion
 
